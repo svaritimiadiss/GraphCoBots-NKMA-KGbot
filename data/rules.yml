@@ -1,0 +1,77 @@
+#version: "3.2.10"
+
+rules:
+- rule: trigger infobot transference
+  steps:
+    - intent: infobot_transference
+    - action: action_set_reminder
+    - action: utter_infobot_transference
+
+- rule: trigger zoi kai ergo transference
+  steps:
+    - intent: zoi_kai_ergo_transference
+    - action: action_set_reminder
+    - action: utter_zoi_kai_ergo_transference
+
+- rule: react to general reminder
+  steps:
+  - intent: EXTERNAL_reminder
+  - action: action_react_to_reminder
+
+- rule: explain i am trained only on greek questions
+  steps:
+  - intent: non_greek_language
+  - action: action_set_reminder
+  - action: utter_non_greek_language
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: action_set_reminder
+  - action: action_default_fallback
+
+# ΔΕΝ θελουμε reminder στο goodbye προφανώς αφού το αποχαιρετάμε.
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_goodbye
+
+- rule: neo4j query exhibitions for each hall
+  steps:
+  - intent: hall_exhibitions
+  - action: action_hall_exhibitions
+  - action: action_set_reminder
+  - action: action_utter_graph_output_hall_exhibitions
+
+- rule: neo4j query exhibitions for each collection
+  steps:
+  - intent: collection_exhibitions
+  - action: action_collection_exhibitions
+  - action: action_set_reminder
+  - action: action_utter_graph_output_collection_exhibitions
+
+- rule: neo4j query exhibitions for each collection with showcase
+  steps:
+  - intent: collection_exhibitions_and_showcase
+  - action: action_collection_exhibitions_and_showcase
+  - action: action_set_reminder
+  - action: action_utter_graph_output_collection_exhibitions_and_showcase
+
+- rule: neo4j query exhibitions for each collection
+  steps:
+  - intent: floor_exhibits
+  - action: action_floor_exhibits
+  - action: action_set_reminder
+  - action: action_utter_graph_output_floor_exhibits
+
+- rule: swearing
+  steps:
+  - intent: swearing
+  - action: action_set_reminder
+  - action: utter_swearing
+
+#- rule: neo4j Nikos Kazantzakis cities travelled
+#  steps:
+#  - intent: location_cities
+#  - action: action_location_areas
+#  - action: action_utter_graph_output_location_areas

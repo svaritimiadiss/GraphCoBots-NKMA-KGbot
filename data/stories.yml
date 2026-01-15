@@ -1,0 +1,61 @@
+#version: "3.2.10"
+
+stories:
+- story: greet conversation start
+  steps:
+  - intent: welcome
+  - action: action_set_reminder
+  - action: action_create_collections_carousels
+
+- story: Say goodbye when affirm
+  steps:
+  - intent: compliment
+  - action: utter_compliment
+  - intent: affirm
+  - action: action_set_reminder
+  - action: action_create_collections_carousels
+
+# ΔΕΝ θελουμε reminder στο goodbye προφανώς αφού το αποχαιρετάμε.
+- story: Say goodbye when deny
+  steps:
+  - intent: compliment
+  - action: utter_compliment
+  - intent: deny
+  - action: action_goodbye
+
+- story: viografika_stoixeia
+  steps:
+  - intent: viografika_stoixeia
+  - action: action_set_reminder
+  - action: utter_viografika_stoixeia
+
+- story: odusseia
+  steps:
+  - intent: odusseia
+  - action: action_set_reminder
+  - action: utter_odusseia
+
+- story: filoi_epirroes
+  steps:
+  - intent: filoi_epirroes
+  - action: action_set_reminder
+  - action: utter_filoi_epirroes
+
+- story: proima_theatrika
+  steps:
+  - intent: proima_theatrika
+  - action: action_set_reminder
+  - action: utter_proima_theatrika
+
+- story: mithistorimata
+  steps:
+  - intent: mithistorimata
+  - action: action_set_reminder
+  - action: utter_mithistorimata
+
+- story: thematikes_general
+  steps:
+  - intent: thematikes_general
+  - action: action_set_reminder
+  - action: action_thematikes_general
+
