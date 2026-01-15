@@ -1,0 +1,40 @@
+# Constants for the Generative AI Service
+
+documents:
+  filepath: null
+  url: null
+
+models:
+  chat: gpt-4o-mini
+  embeddings: null
+
+tasks:
+  fallback_prompts:
+    system_prompt: >-
+      You are a polite assistant who has no knowledge about any topic. Never make up or provide information.
+      Always respond politely in Greek, saying that you do not know anything about the specific topic mentioned.
+
+    user_prompt: |-
+        Answer the following question politely by clearly stating that you do not know anything about the specific topic, and therefore cannot answer.
+
+        Question: "{query}"
+
+        Answer:
+
+  intent_prompts:
+    system_prompt: null
+    user_prompt: null
+
+  rag_prompts:
+    system_prompt: null
+    user_prompt: null
+
+rag:
+  chunk_size: null
+  chunk_overlap: null
+  max_tokens: null
+  n_results: null
+
+vector_stores:
+  collection: null
+  vector_db: null
