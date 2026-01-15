@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>!(function (socket="http://localhost:5005/") {
+
+                let e = document.createElement("script"),
+                    t = document.head || document.getElementsByTagName("head")[0];
+
+                (e.src =
+                 "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+                    // Replace 1.x.x with the version that you want
+                    (e.async = !0),
+                    (e.onload = () => {
+                    window.WebChat.default(
+
+                        {
+                            initPayload: '/welcome',
+                            customData: { language: "en" },
+                            socketUrl: socket,
+                            title: "Memobot",
+                            subtitle:"Ask me anything about our events",
+                            showFullScreenButton: true,
+                            showMessageDate: true,
+                            params: {
+                                images: {
+                                    dims: {
+                                        width: 210,
+                                    }
+                                }
+                            },
+
+
+                            // add other props here
+                        },
+                        null
+                    );
+                }),
+                    t.insertBefore(e, t.firstChild);
+
+            })();
+            localStorage.clear();
+
+        </script>
+        <script>
+            // function send(message, display = True) {
+            //     sendUserMessage({message: message, sender: sender_id})
+            //
+            //     if (display) {
+            //     displayUserMessage(message)
+            //     }
+            // }
+            //
+            // $(document).ready(function() {
+            //     const user_type = document.getElementById('user_type').innerText
+            //     const payload = "/EXTERNAL_reminder"
+            //
+            //     send(payload, False)
+            // })
+
+            var setIntervalId;
+            function openChat() { document.querySelector(".rw-launcher").click();
+                clearInterval(setIntervalId); }
+            setIntervalId = setInterval(openChat, 1000); //Αυτόματο άνοιγμα-popup του widget μετά απο 1 δευτερόλεπτο
+
+            const myInterval = setInterval(showLastPeLement, 1000);
+            function showLastPeLement(){
+                var someElementsItems = document.querySelectorAll(".rw-markdown > p");
+                var last = (someElementsItems[someElementsItems.length -1]).innerText;
+                if (last === "Φαίνεται ότι θέλετε να μεταφερθείτε στο Infobot για πληροφορίες γενικού περιεχομένου που αφορούν το Μουσείο."){
+                    !(function (socket="http://localhost:5006") {
+
+                        let e = document.createElement("script"),
+                            t = document.head || document.getElementsByTagName("head")[0];
+
+                        (e.src =
+                         "https://cdn.jsdelivr.net/npm/rasa-webchat@1.x.x/lib/index.js"),
+                            // Replace 1.x.x with the version that you want
+                            (e.async = !0),
+                            (e.onload = () => {
+                            window.WebChat.default(
+
+                                {
+                                    initPayload: '/welcome',
+                                    customData: { language: "en" },
+                                    socketUrl: socket,
+                                    title: "MitsiChatbot",
+                                    subtitle:"Ask me anything about our events",
+                                    showFullScreenButton: true,
+                                    showMessageDate: true,
+
+                                    // add other props here
+                                },
+                                null
+                            );
+                        }),
+                            t.insertBefore(e, t.firstChild);
+
+                    })();
+
+                    localStorage.clear();
+                }
+                console.log(last);
+                //console.log(socket);
+            }
+
+        </script>
+
+        <script>
+
+        </script>
+        <style>
+            .rw-conversation-container
+            .rw-header {background-color: rgb(21, 37, 107);}
+            .rw-launcher {background-color: rgb(21, 37, 107);}
+            .rw-conversation-container .rw-client {background-color: rgb(21, 37, 107);}
+        </style>
+
+
+    </body>
+</html>
+

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  exhibition-kazantzakis-core-server:
+    container_name: exhibition-kazantzakis-core-server
+    restart: always # Na to svisw an dw oti mpainei se loopα me restarts
+    build:
+      context: . # Δηλαδή κάνει build το Dockerfile
+    ports:
+      - '5005:5005'
+    expose:
+      - '5005'
+
+  exhibition-kazantzakis-actions-server:
+    container_name: exhibition-kazantzakis-actions-server
+    restart: always # Na to svisw an dw oti mpainei se loopα me restarts
+    build:
+      context: actions # Δηλαδή κάνει build το Dockerfile
+    ports:
+      - '5055:5055'
+    expose:
+      - '5055'
